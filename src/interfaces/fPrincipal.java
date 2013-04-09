@@ -4,17 +4,36 @@
  */
 package interfaces;
 
+import modele.HibernateUtil;
+import org.hibernate.Session;
+
 /**
  *
- * @author aredhel
+ * @author FLORIAN
  */
 public class fPrincipal extends javax.swing.JFrame {
+    private static Session session = HibernateUtil.getSessionFactory().openSession();
+    protected pTypeChambre pnltypeChambres = new pTypeChambre();
+    protected pHebergement pnlHebergement = new pHebergement();
+    protected pEtablissement pnlEtablissement = new pEtablissement();
+    protected pAttributionChambre pnlAttributionChambre = new pAttributionChambre();
+    protected pAccueil pnlAccueil = new pAccueil();
+
+    public static Session getSession() {
+        return session;
+    }    
+    
+    public static void setSession(Session psession) {
+        fPrincipal.session = psession;
+    }
 
     /**
-     * Creates new form fPrincipal
+     * Creates new form fPrincipaaal
      */
     public fPrincipal() {
         initComponents();
+        this.setContentPane(pnlAccueil);
+        pack();    
     }
 
     /**
@@ -26,21 +45,137 @@ public class fPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMpropos = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMquitter = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMetablajout = new javax.swing.JMenuItem();
+        jMetablcons = new javax.swing.JMenuItem();
+        jMenuChambre = new javax.swing.JMenu();
+        mTypeChambre = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        ConsultHebergement = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMpropos.setText("Accueil");
+
+        jMenuItem3.setText("A Propos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMpropos.add(jMenuItem3);
+
+        jMquitter.setText("Quitter");
+        jMquitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMquitterActionPerformed(evt);
+            }
+        });
+        jMpropos.add(jMquitter);
+
+        jMenuBar1.add(jMpropos);
+
+        jMenu2.setText("Etablissements");
+
+        jMetablajout.setText("Ajout");
+        jMetablajout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetablajoutActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMetablajout);
+
+        jMetablcons.setText("Consultation");
+        jMenu2.add(jMetablcons);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenuChambre.setText("Type Chambre");
+        jMenuChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuChambreActionPerformed(evt);
+            }
+        });
+
+        mTypeChambre.setText("Consulter");
+        mTypeChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mTypeChambreActionPerformed(evt);
+            }
+        });
+        jMenuChambre.add(mTypeChambre);
+
+        jMenuBar1.add(jMenuChambre);
+
+        jMenu4.setText("Hébergement");
+
+        ConsultHebergement.setText("Consultation");
+        ConsultHebergement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultHebergementActionPerformed(evt);
+            }
+        });
+        jMenu4.add(ConsultHebergement);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Attribution Chambre");
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 594, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 458, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMquitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMquitterActionPerformed
+       System.exit(0);    // TODO add your handling code here:
+    }//GEN-LAST:event_jMquitterActionPerformed
+
+    private void jMetablajoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetablajoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMetablajoutActionPerformed
+
+    private void jMenuChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChambreActionPerformed
+        
+    }//GEN-LAST:event_jMenuChambreActionPerformed
+
+    private void ConsultHebergementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultHebergementActionPerformed
+        // TODO add your handling code here:
+        this.setContentPane(pnlHebergement);
+        
+    }//GEN-LAST:event_ConsultHebergementActionPerformed
+
+    private void mTypeChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mTypeChambreActionPerformed
+        this.setContentPane(pnltypeChambres);
+        pnltypeChambres.afficherTypesChambres();
+        pack();
+    }//GEN-LAST:event_mTypeChambreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -58,13 +193,7 @@ public class fPrincipal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(fPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -77,5 +206,19 @@ public class fPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ConsultHebergement;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuChambre;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMetablajout;
+    private javax.swing.JMenuItem jMetablcons;
+    private javax.swing.JMenu jMpropos;
+    private javax.swing.JMenuItem jMquitter;
+    private javax.swing.JMenuItem mTypeChambre;
     // End of variables declaration//GEN-END:variables
 }
