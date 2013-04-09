@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 avr. 2013 10:08:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modele.Groupe" table="groupe" catalog="festival">
+        <id name="id" type="string">
+            <column name="id" length="4" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="40" not-null="true" />
+        </property>
+        <property name="identiteResponsable" type="string">
+            <column name="identiteResponsable" length="40" />
+        </property>
+        <property name="adressePostale" type="string">
+            <column name="adressePostale" length="120" />
+        </property>
+        <property name="nombrePersonnes" type="int">
+            <column name="nombrePersonnes" not-null="true" />
+        </property>
+        <property name="nomPays" type="string">
+            <column name="nomPays" length="40" not-null="true" />
+        </property>
+        <property name="hebergement" type="char">
+            <column name="hebergement" length="1" not-null="true" />
+        </property>
+        <set name="attributions" inverse="true">
+            <key>
+                <column name="idGroupe" length="4" not-null="true" />
+            </key>
+            <one-to-many class="modele.Attribution" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 avr. 2013 10:08:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modele.Offre" table="offre" catalog="festival">
+        <composite-id name="id" class="modele.OffreId">
+            <key-property name="idEtab" type="string">
+                <column name="idEtab" length="8" />
+            </key-property>
+            <key-property name="idTypeChambre" type="string">
+                <column name="idTypeChambre" length="2" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="typechambre" class="modele.Typechambre" update="false" insert="false" fetch="select">
+            <column name="idTypeChambre" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="etablissement" class="modele.Etablissement" update="false" insert="false" fetch="select">
+            <column name="idEtab" length="8" not-null="true" />
+        </many-to-one>
+        <property name="nombreChambres" type="int">
+            <column name="nombreChambres" not-null="true" />
+        </property>
+        <set name="attributions" inverse="true">
+            <key>
+                <column name="idEtab" length="8" not-null="true" />
+                <column name="idTypeChambre" length="2" not-null="true" />
+            </key>
+            <one-to-many class="modele.Attribution" />
+        </set>
+    </class>
+</hibernate-mapping>

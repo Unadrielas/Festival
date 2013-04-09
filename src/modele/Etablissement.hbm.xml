@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 avr. 2013 10:08:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modele.Etablissement" table="etablissement" catalog="festival">
+        <id name="id" type="string">
+            <column name="id" length="8" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="45" not-null="true" />
+        </property>
+        <property name="adresseRue" type="string">
+            <column name="adresseRue" length="45" not-null="true" />
+        </property>
+        <property name="codePostal" type="string">
+            <column name="codePostal" length="5" not-null="true" />
+        </property>
+        <property name="ville" type="string">
+            <column name="ville" length="35" not-null="true" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" length="13" not-null="true" />
+        </property>
+        <property name="adresseElectronique" type="string">
+            <column name="adresseElectronique" length="70" />
+        </property>
+        <property name="type" type="byte">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="civiliteResponsable" type="string">
+            <column name="civiliteResponsable" length="12" not-null="true" />
+        </property>
+        <property name="nomResponsable" type="string">
+            <column name="nomResponsable" length="25" not-null="true" />
+        </property>
+        <property name="prenomResponsable" type="string">
+            <column name="prenomResponsable" length="25" />
+        </property>
+        <set name="offres" inverse="true">
+            <key>
+                <column name="idEtab" length="8" not-null="true" />
+            </key>
+            <one-to-many class="modele.Offre" />
+        </set>
+    </class>
+</hibernate-mapping>

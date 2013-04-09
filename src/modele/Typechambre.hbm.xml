@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 avr. 2013 10:08:09 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modele.Typechambre" table="typechambre" catalog="festival">
+        <id name="id" type="string">
+            <column name="id" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="libelle" type="string">
+            <column name="libelle" length="15" not-null="true" />
+        </property>
+        <set name="offres" inverse="true">
+            <key>
+                <column name="idTypeChambre" length="2" not-null="true" />
+            </key>
+            <one-to-many class="modele.Offre" />
+        </set>
+    </class>
+</hibernate-mapping>
